@@ -7,7 +7,7 @@ const prompt = ChatPromptTemplate.fromMessages([
 ]);
 
 export const model = new ChatOpenAI({
-  model: "nvidia/nemotron-3-ultra-550b-a55b:free",
+  model: "nvidia/nemotron-3.5-lightning:free",
   temperature: 0,
   apiKey: process.env.OPENAI_API_KEY,
   configuration: {
