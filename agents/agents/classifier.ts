@@ -1,19 +1,10 @@
-import { getWriter } from "@langchain/langgraph"
-import { model } from "@/lib/llm"
+import { executeAgentWithEvents } from "../agent-runner"
 import type { AgentStateType } from "../state"
 
 export async function classifierAgent(state: AgentStateType) {
-  const writer = getWriter()
-  const stream = await model.stream(
+  const classification = await executeAgentWithEvents(
+    "classifierAgent",
     `Classify the following request in one short sentence:\n\n${state.input}`,
   )
-  let classification = ""
-
-  for await (const chunk of stream) {
-    const text = chunk.content.toString()
-    classification += text
-    writer?.(text)
-  }
-
   return { classification }
 }

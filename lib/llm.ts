@@ -7,8 +7,8 @@ const prompt = ChatPromptTemplate.fromMessages([
 ]);
 
 export const model = new ChatOpenAI({
-  model: "google/gemma-3-27b-it",
-  temperature: 0.1,
+  model: "nvidia/nemotron-3-ultra-550b-a55b:free",
+  temperature: 0,
   apiKey: process.env.OPENAI_API_KEY,
   configuration: {
     baseURL: "https://openrouter.ai/api/v1",
